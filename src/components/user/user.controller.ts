@@ -82,7 +82,6 @@ export class UserController {
     description: 'Email of the user to fetch',
   })
   async getUser(@Param('email') email: string) {
-    console.log(email)
     const user = await this.userService.getUser(email);
     if (!user) {
       throw new HttpException(

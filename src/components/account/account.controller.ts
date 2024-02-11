@@ -197,7 +197,7 @@ export class AccountController {
     await this.accountService.deleteAccount(email);
     return {
       message: AccountMessages.ACCOUNT_DELETED_SUCCESSFULLY,
-      status: HttpStatus.OK,
+      status: HttpStatus.NO_CONTENT,
     };
   }
 }

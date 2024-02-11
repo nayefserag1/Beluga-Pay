@@ -47,7 +47,7 @@ describe('UserController', () => {
   });
 
   it('should get a user', async () => {
-    const email =  'test@test.com' ;
+    const email = 'test@test.com';
     const user = {
       email,
       name: 'test',
@@ -78,11 +78,11 @@ describe('UserController', () => {
   });
 
   it('should delete a user', async () => {
-    const emailDto: EmailDto = { email: 'test@test.com' };
+    const email = 'test@test.com';
     jest.spyOn(userService, 'deleteUser').mockResolvedValue(true);
-    expect(await userController.deleteUser(emailDto)).toEqual({
+    expect(await userController.deleteUser(email)).toEqual({
       message: 'User deleted successfully',
-      status: 200,
+      status: 204,
     });
   });
 });

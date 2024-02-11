@@ -5,8 +5,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TransactionModule } from './components/transaction/transaction.module';
 import { AccountModule } from './components/account/account.module';
 import { BillsModule } from './components/bills/bills.module';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './loging/loging.interceptor';
+import { SentryErrorFilter } from './loging/sentry-error.filter';
 
 @Module({
   imports: [
@@ -30,6 +31,10 @@ import { LoggingInterceptor } from './loging/loging.interceptor';
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggingInterceptor,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: SentryErrorFilter,
     },
   ],
 })
